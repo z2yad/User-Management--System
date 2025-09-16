@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#home" id="home-link" class="active">
+        <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M3.018,10.982,3,11H5v9a1,1,0,0,0,1,1H18a1,1,0,0,0,1-1V11h2l-.018-.018a.986.986,0,0,0,.85-.427,1,1,0,0,0-.278-1.387l-9-6a1,1,0,0,0-1.11,0L8,5.465V4A1,1,0,0,0,6,4V6.8L2.446,9.168a1,1,0,0,0-.278,1.387A.983.983,0,0,0,3.018,10.982ZM14,19H10V16a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1Zm-4-8h4a1,1,0,0,1,0,2H10a1,1,0,0,1,0-2Z"></path>
+          </g>
+        </svg>
+        <p>Home</p>
+      </a></li>
+      
+      <li><a href="#register" id="register-link">
+        <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M14,11V8a4,4,0,0,0-8,0v3a1,1,0,0,0,0,2v5a3,3,0,0,0,3,3h4a3,3,0,0,0,3-3V13a1,1,0,0,0,0-2ZM8,8a2,2,0,0,1,4,0v3H8Zm6,10a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V13h6Z M19,4H18V3a1,1,0,0,0-2,0V4H15a1,1,0,0,0,0,2h1V7a1,1,0,0,0,2,0V6h1a1,1,0,0,0,0-2Z"></path>
+          </g>
+        </svg>
+        <p>Register</p>
+      </a></li>
+      
+      <li><a href="#login" id="login-link">
+        <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M12,13a1.49,1.49,0,0,0-1,2.61V17a1,1,0,0,0,2,0V15.61A1.49,1.49,0,0,0,12,13Zm5-4V7A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9ZM9,7a3,3,0,0,1,6,0V9H9Zm9,12a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"></path>
+          </g>
+        </svg>
+        <p>Login</p>
+      </a></li>
+      
+      <li><a href="#profile" id="profile-link">
+        <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M12,12A6,6,0,1,0,6,6,6.006,6.006,0,0,0,12,12ZM12,2A4,4,0,1,1,8,6,4,4,0,0,1,12,2Z M12,14a9.01,9.01,0,0,0-9,9,1,1,0,0,0,2,0,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9.01,9.01,0,0,0,12,14Z"></path>
+          </g>
+        </svg>
+        <p>Profile</p>
+      </a></li>
+    </ul>
+  </nav>
+   <div class="toast-container" id="toast-container"></div>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light theme" aria-label="Toggle dark/light theme">
+        <svg class="theme-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M12,18a6,6,0,1,1,6-6A6.006,6.006,0,0,1,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0-6a1,1,0,0,1,1,1V4a1,1,0,0,1-2,0V3A1,1,0,0,1,12,2ZM3,13H4a1,1,0,0,1,0-2H3a1,1,0,0,1,0,2Zm18,0h1a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2ZM5.64,7.05a1,1,0,0,1,.7.29l.71.71a1,1,0,1,1-1.41,1.41L4.93,8.75a1,1,0,0,1,.71-1.7Zm12.02,0a1,1,0,0,1,.71,1.7l-.71.71a1,1,0,0,1-1.41-1.41l.71-.71A1,1,0,0,1,17.66,7.05ZM5.64,16.95a1,1,0,0,1-.7-.29,1,1,0,0,1,0-1.41l.71-.71A1,1,0,0,1,7.05,16l-.71.71A1,1,0,0,1,5.64,16.95Zm12.02,0a1,1,0,0,1-.7-.29L16.25,16a1,1,0,0,1,1.41-1.41l.71.71a1,1,0,0,1,0,1.41A1,1,0,0,1,17.66,16.95ZM12,22a1,1,0,0,1-1-1V20a1,1,0,0,1,2,0v1A1,1,0,0,1,12,22Z"></path>
+          </g>
+        </svg>
+      </button>
+  <!-- كل الصفحات بقت جوه نفس الكونتينر -->
+  <div class="pages">
+
+    <!-- Home Page -->
+  <div id="home" class="page active">
+    <div class="welcome-message">
+      <h2>Welcome to User Management System</h2>
+      <div id="user-info" style="display: none;">
+        <div class="user-info">
+          <h3>User Information</h3>
+          <p>Welcome <span id="profile-username-info">User Name</span></p>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+        <button class="edit-btn" onclick="showPage('profile')">Go to Profile</button>
+      </div>
+      <div id="guest-message">
+        <p>Please login or register to access your account.</p>
+      </div>
+    </div>
+
+<section id="two" class="todo-section">
+  <h3>To-Do List</h3>
+  <!-- Input -->
+  <div class="todo-input-area">
+    <input type="text" id="todo-input" placeholder="Add a new task...">
+    <input type="date" id="todo-date" placeholder="Select due date">
+    <button id="add-todo-btn">Add</button>
+  </div>
+  <br>
+    <!-- Board -->
+  <div class="todo-board">
+    <!-- Pending Column -->
+    <div class="todo-column">
+      <h4>⏳ Pending</h4>
+      <ul id="pending-list" class="todo-list"></ul>
+    </div>
+
+    <!-- Completed Column -->
+    <div class="todo-column">
+      <h4>✅ Completed</h4>
+      <ul id="completed-list" class="todo-list"></ul>
+    </div>
+    </div>
+</section>
+</div>
+
+    <!-- Login Page -->
+    <div id="login" class="page">
+      <fieldset>
+        <legend>Login</legend>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" placeholder="Enter your username">
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" placeholder="Enter your password">
+          </div>
+
+          <button type="submit">Log in</button>
+          <div class="link">
+            <a href="#register">Don't have an account? Register here</a>
+          </div>
+        </form>
+        <div id="login-error"></div>
+      </fieldset>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register" class="page">
+      <fieldset>
+        <legend>Register</legend>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="register-username">Username:</label>
+            <input type="text" id="register-username" placeholder="Enter your username">
+          </div>
+
+          <div class="form-group">
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" placeholder="Enter your email">
+          </div>
+
+          <div class="form-group">
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" placeholder="Enter your password">
+            <div class="checkbox-group">
+              <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()">
+              <label for="show-password">Show Password</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" placeholder="Confirm your password">
+          </div>
+
+          <button type="submit">Register</button>
+          <div class="link">
+            <a href="#login">Already have an account? Login here</a>
+          </div>
+        </form>
+        <div id="register-error"></div>
+      </fieldset>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profile" class="page">
+      <div class="profile-card">
+        <!-- Profile Picture with Upload -->
+        <div class="profile-pic">
+          <img id="profile-image" src="" alt="Profile Picture" class="hidden">
+          <div class="upload-btn">
+                  <label for="upload-image"><svg class="icon-camera" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
+              fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              width="20" height="20">
+            <path d="M23 19V7a2 2 0 0 0-2-2h-3.17a2 2 0 0 1-1.41-.59l-1.83-1.82a2 2 0 0 0-1.41-.59h-2.36a2 2 0 0 0-1.41.59L7.58 4.41A2 2 0 0 1 6.17 5H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </label>
+            <label for="upload-image" class="visually-hidden"></label>
+            <input type="file" id="upload-image" accept="image/*jpg" aria-label="Upload profile picture" title="Choose a profile picture">
+          </div>
+        </div>
+
+        <!-- Basic Info --
+
+        <!-- Personal Info -->
+        <div class="profile-info">
+          <h2 id="profile-name"><strong>User Name:</strong> <span id="profile-name-info">User Name</span></h2>
+          <p id="profile-email"><strong>Email:</strong> <span id="profile-email-info">example@email.com</span></p>
+          <p class="member"></p>
+<!-- في Personal Info section -->  
+       </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button class="btn-primary" onclick="toggleEditForm()">
+             <svg class="icon-edit" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z">
+
+              </path></g>
+              </svg> Edit Profile</button>
+          <button class="btn-secondary" onclick="showPage('home')"> <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M3.018,10.982,3,11H5v9a1,1,0,0,0,1,1H18a1,1,0,0,0,1-1V11h2l-.018-.018a.986.986,0,0,0,.85-.427,1,1,0,0,0-.278-1.387l-9-6a1,1,0,0,0-1.11,0L8,5.465V4A1,1,0,0,0,6,4V6.8L2.446,9.168a1,1,0,0,0-.278,1.387A.983.983,0,0,0,3.018,10.982ZM14,19H10V16a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1Zm-4-8h4a1,1,0,0,1,0,2H10a1,1,0,0,1,0-2Z"></path>
+          </g>
+        </svg> Back to Home</button>
+        </div>
+
+        <!-- Edit Profile Form -->
+          <div id="edit-profile-form" class="hidden" >
+            <h3>Edit Your Information</h3>
+
+            <div class="form-group">
+              <label for="edit-username">Username:</label>
+              <input type="text" id="edit-username" placeholder="Enter new username">
+            </div>
+      
+      <div class="form-group">
+        <label for="edit-email">Email:</label>
+        <input type="email" id="edit-email" placeholder="Enter new email">
+      </div>
+      
+<div class="profile-image-wrapper">
+  <img id="profile-image" src="" alt="Profile">
+
+  <!-- input file hidden -->
+  <input type="file" id="edit-image" accept="image/*" hidden>
+
+  <!-- label اللي فيها الأيقونة -->
+  <label for="edit-image" class="edit-image-btn">
+    <!-- SVG أيقونة كاميرا -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
+         fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         width="20" height="20">
+      <path d="M23 19V7a2 2 0 0 0-2-2h-3.17a2 2 0 0 1-1.41-.59l-1.83-1.82a2 2 0 0 0-1.41-.59h-2.36a2 2 0 0 0-1.41.59L7.58 4.41A2 2 0 0 1 6.17 5H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2z"/>
+      <circle cx="12" cy="13" r="4"/>
+    </svg>
+  </label>
+</div>      
+      <div class="form-buttons">
+        <button class="btn-save">
+          <svg class="save-icon"  xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier"> 
+            <path d="M15 20V15H9V20M18 20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H14.1716C14.702 4 15.2107 4.21071 15.5858 4.58579L19.4142 8.41421C19.7893 8.78929 20 9.29799 20 9.82843V18C20 19.1046 19.1046 20 18 20Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+            </g></svg> Save</button>
+        <button class="btn-cancel" onclick="toggleEditForm()">
+          <svg  class="cancel-icon" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier"> <title>cancel2</title>
+            <path d="M19.587 16.001l6.096 6.096c0.396 0.396 0.396 1.039 0 1.435l-2.151 2.151c-0.396 0.396-1.038 0.396-1.435 0l-6.097-6.096-6.097 6.096c-0.396 0.396-1.038 0.396-1.434 0l-2.152-2.151c-0.396-0.396-0.396-1.038 0-1.435l6.097-6.096-6.097-6.097c-0.396-0.396-0.396-1.039 0-1.435l2.153-2.151c0.396-0.396 1.038-0.396 1.434 0l6.096 6.097 6.097-6.097c0.396-0.396 1.038-0.396 1.435 0l2.151 2.152c0.396 0.396 0.396 1.038 0 1.435l-6.096 6.096z"></path> </g>
+         </svg> Cancel</button>
+      </div>
+      <div class="message-profile"></div>
+    </div>
+    </div>
+    <!-- Not Found Page -->
+    <div id="not-found" class="page">
+      <h2>404 - Page Not Found</h2>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='48' fill='%23ccc'%3E404%3C/text%3E%3Ctext x='150' y='130' text-anchor='middle' font-size='16' fill='%23999'%3EPage Not Found%3C/text%3E%3C/svg%3E" alt="Page Not Found" width="300">
+      <div class="action-buttons">
+         <button class="btn-primary" onclick="showPage('home')">🏠 Back to Home</button>
+      </div>
+    </div>
+  </div> <!-- end .pages -->
+  <script src="app.js"></script>
+</body>
+</html>
